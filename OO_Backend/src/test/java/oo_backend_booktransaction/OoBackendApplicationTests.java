@@ -1,4 +1,4 @@
-package com.example.oo_backend;
+package oo_backend_booktransaction;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.example.oo_backend;
+package oo_backend_booktransaction;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.backend.entity;
+package oo_backend_booktransaction.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
