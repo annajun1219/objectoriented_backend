@@ -1,0 +1,4 @@
+package oo_backend_booktransaction.chat.entity;
+
+public class Message {
+}
