@@ -11,5 +11,6 @@
         <module name="OO_Backend.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>

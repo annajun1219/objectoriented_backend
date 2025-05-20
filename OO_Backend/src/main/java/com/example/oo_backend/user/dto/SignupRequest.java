@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class SignupRequest {
+    private Long userId;
     private String name;
     private String email;
     private String password;
@@ -15,5 +16,4 @@ public class SignupRequest {
     private String phone;
     private LocalDate birth;
 }
-
 
