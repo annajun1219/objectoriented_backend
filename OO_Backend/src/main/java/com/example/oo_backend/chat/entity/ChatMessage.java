@@ -30,6 +30,13 @@ public class ChatMessage {
 
     @Column(nullable = false)
     private LocalDateTime sentAt;
+
+    public ChatMessage(ChatRoom room, User sender, String content, LocalDateTime sentAt) {
+        this.room = room;
+        this.sender = sender;
+        this.content = content;
+        this.sentAt = sentAt;
+    }
 }
 
 
