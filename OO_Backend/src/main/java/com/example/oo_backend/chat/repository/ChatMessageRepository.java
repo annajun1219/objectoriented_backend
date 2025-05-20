@@ -5,7 +5,6 @@ import com.example.oo_backend.chat.entity.ChatRoom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
-import java.util.UUID;
 import java.util.List;
 
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
