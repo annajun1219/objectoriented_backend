@@ -20,7 +20,8 @@ public class TimetableRequest {
     public static class ClassInfo {
         private String subject;    // 과목명
         private String professor;  // 교수명
-        private String classTime;  // 수업 시간 (예: "09:00-10:00")
+        private String startTime; //
+        private String endTime;   //
     }
 }
 
