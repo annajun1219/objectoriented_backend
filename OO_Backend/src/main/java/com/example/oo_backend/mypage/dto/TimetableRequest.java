@@ -18,9 +18,9 @@ public class TimetableRequest {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class ClassInfo {
-        private String time;
-        private String subject;
-        private String professor;
+        private String subject;    // 과목명
+        private String professor;  // 교수명
+        private String classTime;  // 수업 시간 (예: "09:00-10:00")
     }
 }
 

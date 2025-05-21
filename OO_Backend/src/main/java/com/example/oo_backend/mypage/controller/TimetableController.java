@@ -27,7 +27,7 @@ public class TimetableController {
     }
 
     /**
-     * 시간표 데이터를 등록 또는 수정합니다.
+     * 시간표 데이터를 등록 또는 수정
      * URL 예: POST /api/mypage/timetable?userId=user-123abc
      */
     @PostMapping

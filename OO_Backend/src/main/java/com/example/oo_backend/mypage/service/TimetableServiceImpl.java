@@ -4,26 +4,53 @@ import com.example.oo_backend.mypage.dto.TimetableRequest;
 import com.example.oo_backend.mypage.dto.TimetableResponse;
 import com.example.oo_backend.mypage.entity.Timetable;
 import com.example.oo_backend.mypage.repository.TimetableRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.Map;
 
 @Service
 public class TimetableServiceImpl implements TimetableService {
 
+    private static final Logger logger = LoggerFactory.getLogger(TimetableServiceImpl.class);
+
     private final TimetableRepository timetableRepository;
+    private final ObjectMapper objectMapper;
 
     @Autowired
     public TimetableServiceImpl(TimetableRepository timetableRepository) {
         this.timetableRepository = timetableRepository;
+        this.objectMapper = new ObjectMapper(); // JSON 변환용 ObjectMapper 초기화
     }
 
     @Override
     public TimetableResponse getTimetable(String userId) {
         Timetable timetable = timetableRepository.findByUserId(userId);
-        // 실제 구현에서는 timetable.getTimetableData()를 파싱하여 Map<String, List<TimetableRequest.ClassInfo>>로 변환합니다.
+        if (timetable != null && timetable.getTimetableData() != null && !timetable.getTimetableData().isEmpty()) {
+            try {
+                // 저장된 JSON 문자열을 Map<String, List<TimetableRequest.ClassInfo>>로 파싱
+                Map<String, java.util.List<TimetableRequest.ClassInfo>> timetableDataMap =
+                        objectMapper.readValue(
+                                timetable.getTimetableData(),
+                                new TypeReference<>() {}
+                        );
+                return TimetableResponse.builder()
+                        .userId(userId)
+                        .timetableData(timetableDataMap)
+                        .build();
+            } catch (Exception e) {
+                // 문자열 합치기 대신 파라미터화된 로깅 사용
+                logger.error("타임테이블 데이터를 파싱하지 못했습니다. userId={}", userId, e);
+            }
+        }
         return TimetableResponse.builder()
                 .userId(userId)
-                .timetableData(java.util.Collections.emptyMap())
+                .timetableData(Collections.emptyMap())
                 .build();
     }
 
@@ -34,13 +61,17 @@ public class TimetableServiceImpl implements TimetableService {
             timetable = new Timetable();
             timetable.setUserId(userId);
         }
-        // 예: request.getTimetableData()를 JSON 문자열로 변환 (실제 구현에는 ObjectMapper 사용)
-        timetable.setTimetableData(request.getTimetableData().toString());
-        timetable = timetableRepository.save(timetable);
-        return TimetableResponse.builder()
-                .userId(userId)
-                .timetableData(java.util.Collections.emptyMap())
-                .build();
+        try {
+            // 사용자의 Map 데이터를 JSON 문자열로 변환하여 저장
+            String jsonData = objectMapper.writeValueAsString(request.getTimetableData());
+            timetable.setTimetableData(jsonData);
+        } catch (Exception e) {
+            logger.error("타임테이블 요청 데이터를 JSON 문자열로 변환하지 못했습니다. userId={}", userId, e);
+        }
+        timetableRepository.save(timetable);
+        // 저장 후 최신 상태 데이터를 조회하여 반환
+        return getTimetable(userId);
     }
 }
+
 

@@ -5,42 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8a1bbb2-d274-4f86-9c07-a00aa894cccf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/objectoriented_backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/MypageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/PurchaseHistoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/SalesHistoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/TimetableController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/WishlistController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/ProfileResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/PurchaseHistoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/SalesHistoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/WishlistResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/PurchaseHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/SalesHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Timetable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Wishlist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/PurchaseHistoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/SalesHistoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/TimetableRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/WishlistRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/MypageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/MypageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/PurchaseHistoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/PurchaseHistoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/SalesHistoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/SalesHistoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/WishlistService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/WishlistServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/TimetableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/TimetableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Timetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Timetable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +130,7 @@
       <workItem from="1747210269120" duration="1405000" />
       <workItem from="1747385946923" duration="1097000" />
       <workItem from="1747642207359" duration="32250000" />
-      <workItem from="1747823751814" duration="10801000" />
+      <workItem from="1747823751814" duration="16423000" />
     </task>
     <servers />
   </component>

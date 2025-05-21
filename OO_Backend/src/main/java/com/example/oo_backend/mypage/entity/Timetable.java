@@ -15,7 +15,7 @@ public class Timetable {
     private Long id;
     private String userId;
 
-    // 예를 들어 JSON 문자열로 저장 (실제 구현에 따라 별도 테이블로 정규화할 수도 있음)
     @Lob
+    @Column(columnDefinition = "TEXT")
     private String timetableData;
 }
