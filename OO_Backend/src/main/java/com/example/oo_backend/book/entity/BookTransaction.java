@@ -16,11 +16,12 @@ public class BookTransaction {
     private Long id;
 
     // 구매자 ID
-    @Column(columnDefinition = "CHAR(36)")
     private Long buyerId;
+    private Long sellerId;
 
     // 판매되는 교재 ID
     private Long productId;
+    private String productTitle;
 
     // 결제 금액
     private int price;

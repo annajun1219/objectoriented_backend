@@ -27,4 +27,5 @@ public class User {
     private LocalDate birth;
 
     private String profileImage;
+
 }
