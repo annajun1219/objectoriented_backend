@@ -5,14 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8a1bbb2-d274-4f86-9c07-a00aa894cccf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/objectoriented_backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/MypageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/PurchaseHistoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/SalesHistoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/TimetableController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/controller/WishlistController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/ProfileResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/PurchaseHistoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/SalesHistoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/TimetableResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/dto/WishlistResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/PurchaseHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/SalesHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Timetable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/entity/Wishlist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/PurchaseHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/SalesHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/TimetableRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/repository/WishlistRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/MypageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/MypageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/PurchaseHistoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/PurchaseHistoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/SalesHistoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/SalesHistoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/TimetableServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/WishlistService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/mypage/service/WishlistServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/controller/BookTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/controller/BookTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/dto/BookPurchaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/dto/BookPurchaseResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/dto/BookRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/dto/BookRegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/entity/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/entity/BookTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/entity/BookTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/service/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/service/BookTransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/OO_Backend/src/main/java/com/example/oo_backend/book/service/BookTransactionServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +85,12 @@
     &quot;assignee&quot;: &quot;annajun1219&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/annajun1219/objectoriented_backend.git&quot;,
-    &quot;accountId&quot;: &quot;9567846d-f0e7-42a4-9ead-7e47b93a87bf&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/annajun1219/objectoriented_backend.git",
+    "accountId": "695d3842-829f-4cd9-8785-b4cd7b641e14"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -87,6 +115,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.OoBackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;ys&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -115,8 +144,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
       </set>
     </attachedChunks>
   </component>
@@ -131,10 +160,22 @@
       <workItem from="1747210269120" duration="1405000" />
       <workItem from="1747385946923" duration="1097000" />
       <workItem from="1747642207359" duration="32250000" />
+      <workItem from="1747823751814" duration="10801000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
