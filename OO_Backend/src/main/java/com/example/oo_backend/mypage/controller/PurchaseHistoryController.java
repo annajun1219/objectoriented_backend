@@ -25,7 +25,7 @@ public class PurchaseHistoryController {
      */
     @GetMapping
     public List<PurchaseHistoryResponse> getPurchaseHistory(
-            @RequestParam("userId") String userId,
+            @RequestParam("userId") Long userId,
             @RequestParam(value = "status", required = false) String status) {
         return purchaseHistoryService.getPurchaseHistory(userId, status);
     }

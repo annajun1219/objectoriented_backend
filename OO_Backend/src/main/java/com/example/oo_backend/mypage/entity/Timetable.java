@@ -13,7 +13,7 @@ public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userId;
+    private Long userId;
 
     @Lob
     @Column(columnDefinition = "TEXT")

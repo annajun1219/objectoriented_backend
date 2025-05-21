@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface PurchaseHistoryRepository extends JpaRepository<PurchaseHistory, Long> {
-    List<PurchaseHistory> findByUserId(String userId);
-    List<PurchaseHistory> findByUserIdAndStatus(String userId, String status);
+    List<PurchaseHistory> findByUserId(Long userId);
+    List<PurchaseHistory> findByUserIdAndStatus(Long userId, String status);
 }
 

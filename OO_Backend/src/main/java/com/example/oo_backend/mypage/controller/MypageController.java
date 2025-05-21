@@ -21,7 +21,7 @@ public class MypageController {
      * URL 예: GET /api/mypage?userId=user-123abc
      */
     @GetMapping
-    public ProfileResponse getMypage(@RequestParam("userId") String userId) {
+    public ProfileResponse getMypage(@RequestParam("userId") Long userId) {
         return mypageService.getMypageInfo(userId);
     }
 }

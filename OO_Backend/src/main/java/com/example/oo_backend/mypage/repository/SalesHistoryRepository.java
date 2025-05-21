@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface SalesHistoryRepository extends JpaRepository<SalesHistory, Long> {
-    List<SalesHistory> findByUserId(String userId);
-    List<SalesHistory> findByUserIdAndStatus(String userId, String status);
+    List<SalesHistory> findByUserId(Long userId);
+    List<SalesHistory> findByUserIdAndStatus(Long userId, String status);
 }

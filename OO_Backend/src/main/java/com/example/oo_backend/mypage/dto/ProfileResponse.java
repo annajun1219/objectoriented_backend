@@ -1,17 +1,19 @@
 package com.example.oo_backend.mypage.dto;
 
 import lombok.*;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProfileResponse {
-    private String userId;
+    private Long userId;
     private String name;
     private String profileImage;
-    private double rating;
-    // 시간표 정보는 별도 DTO(여기서는 TimetableResponse.ScheduleInfo 사용)
-    private TimetableResponse.ScheduleInfo scheduleInfo;
+    private double rating; //user entity에 rating 추가 필요
+    // timetableData를 직접 포함하여 시간표 정보를 전달
+    private Map<String, List<TimetableRequest.ClassInfo>> timetableData;
 }
 

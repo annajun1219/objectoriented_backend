@@ -3,6 +3,8 @@ package com.example.oo_backend.mypage.service;
 import com.example.oo_backend.mypage.dto.PurchaseHistoryResponse;
 import com.example.oo_backend.mypage.entity.PurchaseHistory;
 import com.example.oo_backend.mypage.repository.PurchaseHistoryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class PurchaseHistoryServiceImpl implements PurchaseHistoryService {
 
+    private static final Logger logger = LoggerFactory.getLogger(PurchaseHistoryServiceImpl.class);
+
     private final PurchaseHistoryRepository purchaseHistoryRepository;
 
     @Autowired
@@ -20,12 +24,13 @@ public class PurchaseHistoryServiceImpl implements PurchaseHistoryService {
     }
 
     @Override
-    public List<PurchaseHistoryResponse> getPurchaseHistory(String userId, String status) {
+    public List<PurchaseHistoryResponse> getPurchaseHistory(Long userId, String status) {
         List<PurchaseHistory> histories = (status != null && !status.isEmpty())
                 ? purchaseHistoryRepository.findByUserIdAndStatus(userId, status)
                 : purchaseHistoryRepository.findByUserId(userId);
 
-        return histories.stream().map(h -> PurchaseHistoryResponse.builder()
+        return histories.stream()
+                .map(h -> PurchaseHistoryResponse.builder()
                         .bookId(h.getBookId())
                         .title(h.getTitle())
                         .price(h.getPrice())
@@ -36,4 +41,5 @@ public class PurchaseHistoryServiceImpl implements PurchaseHistoryService {
                 .collect(Collectors.toList());
     }
 }
+
 

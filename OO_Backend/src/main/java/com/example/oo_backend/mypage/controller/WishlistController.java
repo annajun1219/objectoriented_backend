@@ -23,7 +23,7 @@ public class WishlistController {
      * URL 예: GET /api/mypage/wishlist?userId=user-123abc
      */
     @GetMapping
-    public List<WishlistResponse> getWishlist(@RequestParam("userId") String userId) {
+    public List<WishlistResponse> getWishlist(@RequestParam("userId") Long userId) {
         return wishlistService.getWishlist(userId);
     }
 }

@@ -18,7 +18,7 @@ public class PurchaseHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userId; // 구매자 식별
+    private Long userId; // 구매자 식별
     private Long bookId;
     private String title;
     private double price;

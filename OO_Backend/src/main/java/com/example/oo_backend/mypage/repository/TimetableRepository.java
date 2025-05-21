@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TimetableRepository extends JpaRepository<Timetable, Long> {
-    Timetable findByUserId(String userId);
+    Timetable findByUserId(Long userId);
 }
 

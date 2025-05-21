@@ -25,7 +25,7 @@ public class SalesHistoryController {
      */
     @GetMapping
     public List<SalesHistoryResponse> getSalesHistory(
-            @RequestParam("userId") String userId,
+            @RequestParam("userId") Long userId,
             @RequestParam(value = "status", required = false) String status) {
         return salesHistoryService.getSalesHistory(userId, status);
     }

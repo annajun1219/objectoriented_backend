@@ -10,7 +10,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimetableResponse {
-    private String userId;
+    private Long userId;
     // 조회 시 파싱한 시간표 데이터, 예: 요일 -> List<ClassInfo>
     private Map<String, List<TimetableRequest.ClassInfo>> timetableData;
 }

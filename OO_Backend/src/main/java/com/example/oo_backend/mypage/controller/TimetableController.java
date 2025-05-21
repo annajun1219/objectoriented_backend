@@ -22,7 +22,7 @@ public class TimetableController {
      * URL 예: GET /api/mypage/timetable?userId=user-123abc
      */
     @GetMapping
-    public TimetableResponse getTimetable(@RequestParam("userId") String userId) {
+    public TimetableResponse getTimetable(@RequestParam("userId") Long userId) {
         return timetableService.getTimetable(userId);
     }
 
@@ -32,7 +32,7 @@ public class TimetableController {
      */
     @PostMapping
     public TimetableResponse saveOrUpdateTimetable(
-            @RequestParam("userId") String userId,
+            @RequestParam("userId") Long userId,
             @RequestBody TimetableRequest request) {
         return timetableService.saveOrUpdateTimetable(userId, request);
     }

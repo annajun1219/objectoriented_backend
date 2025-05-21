@@ -20,7 +20,7 @@ public class WishlistServiceImpl implements WishlistService {
     }
 
     @Override
-    public List<WishlistResponse> getWishlist(String userId) {
+    public List<WishlistResponse> getWishlist(Long userId) {
         List<Wishlist> wishlists = wishlistRepository.findByUserId(userId);
         return wishlists.stream()
                 .map(wishlist -> WishlistResponse.builder()
@@ -31,8 +31,7 @@ public class WishlistServiceImpl implements WishlistService {
                         .datetime(wishlist.getDatetime().toString())
                         .status(wishlist.getStatus())
                         .sellerId(wishlist.getSellerId())
-                        .build()
-                )
+                        .build())
                 .collect(Collectors.toList());
     }
 }

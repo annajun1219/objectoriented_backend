@@ -4,7 +4,7 @@ import com.example.oo_backend.mypage.dto.TimetableRequest;
 import com.example.oo_backend.mypage.dto.TimetableResponse;
 
 public interface TimetableService {
-    TimetableResponse getTimetable(String userId);
-    TimetableResponse saveOrUpdateTimetable(String userId, TimetableRequest request);
+    TimetableResponse getTimetable(Long userId);
+    TimetableResponse saveOrUpdateTimetable(Long userId, TimetableRequest request);
 }
 
