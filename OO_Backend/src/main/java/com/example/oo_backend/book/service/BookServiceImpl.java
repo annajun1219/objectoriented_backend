@@ -1,5 +1,8 @@
 package com.example.oo_backend.book.service;
 
+import com.example.oo_backend.mypage.entity.Schedule;
+import com.example.oo_backend.mypage.repository.ScheduleRepository;
+import com.example.oo_backend.book.dto.BookPreviewDto;
 import com.example.oo_backend.book.dto.BookDetailResponse;
 import com.example.oo_backend.book.dto.BookRegisterRequest;
 import com.example.oo_backend.book.dto.BookRegisterResponse;
@@ -11,6 +14,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +25,7 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
+    private final ScheduleRepository scheduleRepository;
 
     @Override
     public BookRegisterResponse registerBook(BookRegisterRequest request) {
@@ -73,4 +81,86 @@ public class BookServiceImpl implements BookService {
 
         return response;
     }
+
+
+    @Override
+    public List<BookPreviewDto> getBooksByDepartment(String departmentName) {
+        return bookRepository.findByCategory(departmentName).stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookPreviewDto> getRecommendedBooksBySchedule(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        List<Schedule> schedules = scheduleRepository.findByUser(user);
+        Set<Book> matchedBooks = new HashSet<>();
+
+        for (Schedule s : schedules) {
+            matchedBooks.addAll(bookRepository.findByTitleAndProfessorName(s.getSubject(), s.getProfessor()));
+        }
+
+        return matchedBooks.stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookPreviewDto> getBooksBySubjectFromSchedule(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        List<Schedule> schedules = scheduleRepository.findByUser(user);
+        Set<Book> matchedBooks = new HashSet<>();
+
+        for (Schedule s : schedules) {
+            matchedBooks.addAll(bookRepository.findByTitleContaining(s.getSubject()));
+        }
+
+        return matchedBooks.stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookPreviewDto> getBooksByProfessorFromSchedule(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        List<Schedule> schedules = scheduleRepository.findByUser(user);
+        Set<Book> matchedBooks = new HashSet<>();
+
+        for (Schedule s : schedules) {
+            matchedBooks.addAll(bookRepository.findByProfessorNameContaining(s.getProfessor()));
+        }
+
+        return matchedBooks.stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()))
+                .collect(Collectors.toList());
+    }
+
 }
