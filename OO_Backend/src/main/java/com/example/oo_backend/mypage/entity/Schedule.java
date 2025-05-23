@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Schedule {
 
     @Id
@@ -16,7 +17,10 @@ public class Schedule {
     private Long id;
 
     private String day;
-    private String time;
+
+    private String startTime;
+    private String endTime;
+
     private String subject;
     private String professor;
 

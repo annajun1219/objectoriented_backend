@@ -5,10 +5,12 @@ import com.example.oo_backend.book.repository.BookTransactionRepository;
 import com.example.oo_backend.mypage.dto.MyPageResponseDto;
 import com.example.oo_backend.mypage.dto.ScheduleDto;
 import com.example.oo_backend.mypage.repository.ScheduleRepository;
+import com.example.oo_backend.review.entity.Review;
 import com.example.oo_backend.review.repository.ReviewRepository;
 import com.example.oo_backend.user.entity.User;
 import com.example.oo_backend.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,12 +31,22 @@ public class MyPageServiceImpl implements MyPageService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
 
-        double rating = reviewRepository.getAverageRatingByUser(user);
-        int reviewCount = reviewRepository.countByTargetUser(user);
-        int saleCount = bookRepository.countBySeller(user);
-        int purchaseCount = bookTransactionRepository.countByBuyer(user);
+        // 리뷰 리스트 가져오기 (리뷰 개수와 평점 계산)
+        List<Review> reviews = reviewRepository.findBySellerId(userId, PageRequest.of(0, Integer.MAX_VALUE));
+        int reviewCount = reviews.size();
+        double rating = reviewCount == 0 ? 0.0 :
+                reviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
+
+        int saleCount = bookRepository.countBySellerId(user.getUserId());
+        int purchaseCount = bookTransactionRepository.countByBuyerId(user.getUserId());
         List<ScheduleDto> schedule = scheduleRepository.findByUser(user).stream()
-                .map(s -> new ScheduleDto(s.getDay(), s.getTime(), s.getSubject(), s.getProfessor()))
+                .map(s -> new ScheduleDto(
+                        s.getDay(),
+                        s.getStartTime(),
+                        s.getEndTime(),
+                        s.getSubject(),
+                        s.getProfessor()
+                ))
                 .collect(Collectors.toList());
 
         return MyPageResponseDto.builder()
@@ -42,7 +54,6 @@ public class MyPageServiceImpl implements MyPageService {
                 .nickname(user.getName())
                 .profileImage(user.getProfileImage())
                 .rating(rating)
-                .reviewCount(reviewCount)
                 .saleCount(saleCount)
                 .purchaseCount(purchaseCount)
                 .scheduleInfo(schedule)
