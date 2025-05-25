@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable()) //  기본 로그인 폼 비활성화
                 .httpBasic(basic -> basic.disable()) //  기본 인증 헤더 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/**", "/api/chatrooms", "/api/chatrooms/**", "/api/purchase/direct", "/api/books/**", "/api/schedule", "/api/mypage", "/api/recommendation/**", "/api/main").permitAll()
+                        .requestMatchers("/api/users/**", "/api/chatrooms", "/api/chatrooms/**", "/api/purchase/direct", "/api/books/**", "/api/schedule", "/api/mypage", "/api/recommendation/**", "/api/main", "/api/search/**").permitAll()
                         .anyRequest().authenticated()  // 그 외는 인증 필요
                 );
 

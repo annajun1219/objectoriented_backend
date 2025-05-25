@@ -20,4 +20,8 @@ public interface BookService {
     List<BookPreviewDto> getRecommendedBooksBySchedule(Long userId);
     List<BookPreviewDto> getBooksBySubjectFromSchedule(Long userId);
     List<BookPreviewDto> getBooksByProfessorFromSchedule(Long userId);
+
+    // 단과대별 검색어 필터
+    List<BookPreviewDto> searchByProfessorAndCategory(String keyword, String category);
+    List<BookPreviewDto> searchByTitleAndCategory(String keyword, String category);
 }

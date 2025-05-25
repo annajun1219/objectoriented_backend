@@ -4,7 +4,6 @@ import com.example.oo_backend.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
     int countBySellerId(Long sellerId);
@@ -22,6 +21,12 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     // 추가: 교수명 기반 (부분 일치)
     List<Book> findByProfessorNameContaining(String professorName);
 
-    // 🔽 추가: 가장 최근 등록된 교재 1개
-    Optional<Book> findTopByOrderByCreatedAtDesc();
+    // 추가: 전체 검색
+    List<Book> findByTitleContainingIgnoreCase(String title);
+    List<Book> findByProfessorNameContainingIgnoreCase(String professorName);
+
+    // 추가: 단과대별 검색 필터
+    List<Book> findByProfessorNameContainingAndCategory(String professorName, String category);
+    List<Book> findByTitleContainingAndCategory(String title, String category);
+
 }
