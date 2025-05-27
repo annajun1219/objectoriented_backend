@@ -1,8 +1,8 @@
 package com.example.oo_backend.book.service;
 
+
 import com.example.oo_backend.mypage.entity.Schedule;
 import com.example.oo_backend.mypage.repository.ScheduleRepository;
-import com.example.oo_backend.book.dto.BookPreviewDto;
 import com.example.oo_backend.book.dto.BookDetailResponse;
 import com.example.oo_backend.book.dto.BookRegisterRequest;
 import com.example.oo_backend.book.dto.BookRegisterResponse;
@@ -10,10 +10,15 @@ import com.example.oo_backend.book.entity.Book;
 import com.example.oo_backend.book.repository.BookRepository;
 import com.example.oo_backend.user.entity.User;
 import com.example.oo_backend.user.repository.UserRepository;
+import com.example.oo_backend.book.dto.BookPreviewDto;
+import com.example.oo_backend.user.entity.User;
+import com.example.oo_backend.user.entity.UserStatus;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Set;
@@ -29,10 +34,18 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookRegisterResponse registerBook(BookRegisterRequest request) {
+        User user = userRepository.findById(request.getSellerId())
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+
+        if (user.getStatus() == UserStatus.SUSPENDED) {
+            throw new IllegalStateException("사용 중지된 계정입니다.");
+        }
+
         Book book = Book.builder()
                 .title(request.getTitle())
                 .category(request.getCategory())
                 .professorName(request.getProfessorName())
+                .officialPrice(request.getOfficialPrice())
                 .price(request.getPrice())
                 .description(request.getDescription())
                 .sellerId(request.getSellerId())
@@ -68,9 +81,12 @@ public class BookServiceImpl implements BookService {
                 .productId(book.getId())
                 .title(book.getTitle())
                 .price(book.getPrice())
-                .officialPrice(null)         // 추가 정보 없는 경우 null
-                .averageUsedPrice(null)
-                .discountRate(null)
+                .officialPrice(book.getOfficialPrice())
+                .discountRate(
+                        (book.getOfficialPrice() != 0)
+                                ? (int) Math.round((1 - (double) book.getPrice() / book.getOfficialPrice()) * 100)
+                                : 0
+                )
                 .description(book.getDescription())
                 .imageUrl(book.getImageUrl())
                 .status(book.getStatus())
@@ -81,7 +97,6 @@ public class BookServiceImpl implements BookService {
 
         return response;
     }
-
 
     @Override
     public List<BookPreviewDto> getBooksByDepartment(String departmentName) {
@@ -190,5 +205,4 @@ public class BookServiceImpl implements BookService {
                         book.getImageUrl()))
                 .collect(Collectors.toList());
     }
-
 }
