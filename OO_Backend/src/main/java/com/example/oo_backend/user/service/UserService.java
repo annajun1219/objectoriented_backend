@@ -52,7 +52,7 @@ public class UserService {
 
         Map<String, Object> response = new HashMap<>();
         response.put("userId", user.getUserId());
-        response.put("nickname", user.getName());
+        response.put("name", user.getName());
         response.put("email", user.getEmail());
 
         return response;
