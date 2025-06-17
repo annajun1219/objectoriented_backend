@@ -8,7 +8,8 @@ public interface SalesService {
     List<SalesHistoryResponse> getSalesHistory(Long sellerId, String status);
 
     void updateTransactionStatus(Long transactionId, String newStatus);
-    void createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId);
+    Long createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId);
+
 
 
 }

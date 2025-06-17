@@ -24,13 +24,13 @@ public class SalesController {
     }
 
     @PostMapping("/create-transaction")
-    public ResponseEntity<String> createTransaction(
+    public ResponseEntity<Long> createTransaction(
             @RequestParam Long bookId,
             @RequestParam Long sellerId,
             @RequestParam Long buyerId
     ) {
-        salesService.createTransactionIfNotExists(bookId, sellerId, buyerId);
-        return ResponseEntity.ok("거래가 생성되었습니다.");
+        Long transactionId = salesService.createTransactionIfNotExists(bookId, sellerId, buyerId);
+        return ResponseEntity.ok(transactionId);
     }
 
     @PatchMapping("/{transactionId}/status")

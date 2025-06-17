@@ -6,9 +6,12 @@ import com.example.oo_backend.book.entity.BookTransaction;
 import com.example.oo_backend.book.repository.BookRepository;
 import com.example.oo_backend.book.repository.BookTransactionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,25 +49,32 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
-    public void createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId) {
-        // ✅ 필드명이 productId 이므로, repository 메서드도 productId 기준으로!
+    public Long createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId) {
         boolean exists = bookTransactionRepository.existsByProductIdAndSellerIdAndBuyerId(bookId, sellerId, buyerId);
 
-        if (!exists) {
-            Book book = bookRepository.findById(bookId)
-                    .orElseThrow(() -> new IllegalArgumentException("해당 책을 찾을 수 없습니다."));
-
-            BookTransaction newTransaction = new BookTransaction();
-            newTransaction.setProductId(bookId); // ✅ productId로 세팅
-            newTransaction.setProductTitle(book.getTitle());
-            newTransaction.setPrice(book.getPrice());
-            newTransaction.setSellerId(sellerId);
-            newTransaction.setBuyerId(buyerId);
-            newTransaction.setStatus("예약중");
-
-            bookTransactionRepository.save(newTransaction);
+        if (exists) {
+            // 이미 존재하는 경우 기존 거래 ID 반환
+            return bookTransactionRepository.findByProductIdAndSellerIdAndBuyerId(bookId, sellerId, buyerId)
+                    .orElseThrow(() -> new IllegalStateException("거래가 존재하지만 조회에 실패했습니다."))
+                    .getId();
         }
+
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 책을 찾을 수 없습니다."));
+
+        BookTransaction newTransaction = new BookTransaction();
+        newTransaction.setProductId(bookId);
+        newTransaction.setProductTitle(book.getTitle());
+        newTransaction.setPrice(book.getPrice());
+        newTransaction.setSellerId(sellerId);
+        newTransaction.setBuyerId(buyerId);
+        newTransaction.setStatus("예약중");
+
+        BookTransaction saved = bookTransactionRepository.save(newTransaction);
+        return saved.getId(); // ✅ 생성된 거래 ID 반환
     }
+
+
 
     @Override
     public void updateTransactionStatus(Long transactionId, String newStatus) {
