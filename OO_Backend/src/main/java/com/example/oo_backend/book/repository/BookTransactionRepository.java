@@ -13,4 +13,7 @@ public interface BookTransactionRepository extends JpaRepository<BookTransaction
 
     List<BookTransaction> findByBuyerIdAndStatus(Long buyerId, String status);
 
+    boolean existsByProductIdAndSellerIdAndBuyerId(Long productId, Long sellerId, Long buyerId);
+
+
 }

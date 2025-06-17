@@ -23,6 +23,16 @@ public class SalesController {
         return salesService.getSalesHistory(sellerId, status);
     }
 
+    @PostMapping("/create-transaction")
+    public ResponseEntity<String> createTransaction(
+            @RequestParam Long bookId,
+            @RequestParam Long sellerId,
+            @RequestParam Long buyerId
+    ) {
+        salesService.createTransactionIfNotExists(bookId, sellerId, buyerId);
+        return ResponseEntity.ok("거래가 생성되었습니다.");
+    }
+
     @PatchMapping("/{transactionId}/status")
     public ResponseEntity<String> updateTransactionStatus(
             @PathVariable Long transactionId,

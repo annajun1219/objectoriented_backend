@@ -46,6 +46,27 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
+    public void createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId) {
+        // ✅ 필드명이 productId 이므로, repository 메서드도 productId 기준으로!
+        boolean exists = bookTransactionRepository.existsByProductIdAndSellerIdAndBuyerId(bookId, sellerId, buyerId);
+
+        if (!exists) {
+            Book book = bookRepository.findById(bookId)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 책을 찾을 수 없습니다."));
+
+            BookTransaction newTransaction = new BookTransaction();
+            newTransaction.setProductId(bookId); // ✅ productId로 세팅
+            newTransaction.setProductTitle(book.getTitle());
+            newTransaction.setPrice(book.getPrice());
+            newTransaction.setSellerId(sellerId);
+            newTransaction.setBuyerId(buyerId);
+            newTransaction.setStatus("예약중");
+
+            bookTransactionRepository.save(newTransaction);
+        }
+    }
+
+    @Override
     public void updateTransactionStatus(Long transactionId, String newStatus) {
         BookTransaction transaction = bookTransactionRepository.findById(transactionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 거래를 찾을 수 없습니다."));

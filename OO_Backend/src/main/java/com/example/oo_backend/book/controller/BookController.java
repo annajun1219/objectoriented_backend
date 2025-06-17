@@ -20,6 +20,7 @@ public class BookController {
 
     private final BookService bookService;
 
+
     @PostMapping("/register")
     public ResponseEntity<BookRegisterResponse> registerBook(@RequestBody BookRegisterRequest request) {
 

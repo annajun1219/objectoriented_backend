@@ -25,7 +25,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/users/**", "/api/chatrooms", "/api/chatrooms/**",
                                 "/api/purchase/**", "/api/books/**", "/api/books/register",  "/api/schedule", "/api/mypage", "/api/warning",
-                                "/api/recommendation/**", "/api/main", "/api/search/**","/api/sales/**", "/api/reviews","/api/favorites/**",
+                                "/api/recommendation/**", "/api/main", "/api/search/**","/api/sales/**",
+                                "/api/reviews","/api/favorites/**", "api/transactions/**",
                                 "/public/**", "/css/**", "/js/**", "/images/**"
                         ).permitAll()
                         .anyRequest().authenticated()  // 그 외는 인증 필요
