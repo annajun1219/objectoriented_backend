@@ -4,6 +4,8 @@ import com.example.oo_backend.book.dto.BookDetailResponse;
 import com.example.oo_backend.book.dto.BookRegisterRequest;
 import com.example.oo_backend.book.dto.BookRegisterResponse;
 import com.example.oo_backend.book.dto.BookPreviewDto;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import java.util.List;
 
@@ -19,6 +21,8 @@ public interface BookService {
     List<BookPreviewDto> searchByTitle(String keyword);
 
     List<BookPreviewDto> searchByProfessor(String keyword);
+
+    Double getAverageUsedPrice(String title);
 
     // 추천 도서 메서드 추가
 

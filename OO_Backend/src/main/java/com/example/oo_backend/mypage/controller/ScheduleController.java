@@ -21,6 +21,9 @@ public class ScheduleController {
         User user = userRepository.findById(request.getUser().getUserId())
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
 
+        System.out.println("📩 시간표 등록 요청 들어옴: " + request.getDay() + ", 유저 ID: " + request.getUser().getUserId());
+
+
         Schedule newSchedule = Schedule.builder()
                 .user(user)
                 .day(request.getDay())

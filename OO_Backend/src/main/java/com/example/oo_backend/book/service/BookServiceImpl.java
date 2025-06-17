@@ -11,18 +11,17 @@ import com.example.oo_backend.book.repository.BookRepository;
 import com.example.oo_backend.user.entity.User;
 import com.example.oo_backend.user.repository.UserRepository;
 import com.example.oo_backend.book.dto.BookPreviewDto;
-import com.example.oo_backend.user.entity.User;
-import com.example.oo_backend.user.entity.UserStatus;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.config.annotation.web.CsrfDsl;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Set;
 import java.util.HashSet;
+
 
 @Service
 @RequiredArgsConstructor
@@ -36,10 +35,6 @@ public class BookServiceImpl implements BookService {
     public BookRegisterResponse registerBook(BookRegisterRequest request) {
         User user = userRepository.findById(request.getSellerId())
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
-
-        if (user.getStatus() == UserStatus.SUSPENDED) {
-            throw new IllegalStateException("사용 중지된 계정입니다.");
-        }
 
         Book book = Book.builder()
                 .title(request.getTitle())
@@ -89,7 +84,8 @@ public class BookServiceImpl implements BookService {
                 )
                 .description(book.getDescription())
                 .imageUrl(book.getImageUrl())
-                .status(book.getStatus())
+                .category(book.getCategory()) // ✅ 꼭 들어가야 해
+                .professorName(book.getProfessorName()) // ✅ 이것도                .status(book.getStatus())
                 .createdAt(book.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .seller(sellerInfo)
                 .isMyPost(viewerId != null && viewerId.equals(book.getSellerId()))
@@ -247,5 +243,27 @@ public class BookServiceImpl implements BookService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Double getAverageUsedPrice(String title) {
+        List<Book> books = bookRepository.findByTitle(title);
+
+        if (books == null || books.isEmpty()) {
+            return 0.0;
+        }
+
+        if (books.size() == 1) {
+            return books.get(0).getPrice() * 1.0;
+        }
+
+        double total = 0.0;
+        for (Book book : books) {
+            total += book.getPrice();
+        }
+
+        return total / books.size();
+    }
+
+
 }
 

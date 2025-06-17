@@ -6,8 +6,10 @@ import com.example.oo_backend.book.dto.BookRegisterRequest;
 import com.example.oo_backend.book.dto.BookRegisterResponse;
 import com.example.oo_backend.book.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,15 +22,17 @@ public class BookController {
 
     @PostMapping("/register")
     public ResponseEntity<BookRegisterResponse> registerBook(@RequestBody BookRegisterRequest request) {
+
         BookRegisterResponse response = bookService.registerBook(request);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping
-    public ResponseEntity<List<BookPreviewDto>> getAllBooks() {
-        List<BookPreviewDto> books = bookService.getAllBooks();
-        return ResponseEntity.ok(books);
+    @GetMapping("/api/book/price")
+    public ResponseEntity<Double> getAveragePrice(@RequestParam String title) {
+        Double avgPrice = bookService.getAverageUsedPrice(title);
+        return ResponseEntity.ok(avgPrice);
     }
+
 
     @GetMapping("/{productId}")
     public ResponseEntity<BookDetailResponse> getBookDetail(
@@ -43,6 +47,7 @@ public class BookController {
     public ResponseEntity<List<BookPreviewDto>> getBooksByDepartment(@RequestParam String department) {
         return ResponseEntity.ok(bookService.getBooksByDepartment(department));
     }
+    
 
     @GetMapping("/search-by-professor")
     public ResponseEntity<List<BookPreviewDto>> searchByProfessor(@RequestParam String keyword, @RequestParam String category) {
