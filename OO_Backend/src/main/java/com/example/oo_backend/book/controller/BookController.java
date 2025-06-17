@@ -6,6 +6,7 @@ import com.example.oo_backend.book.dto.BookRegisterRequest;
 import com.example.oo_backend.book.dto.BookRegisterResponse;
 import com.example.oo_backend.book.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,12 +21,16 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping("/register")
-    public ResponseEntity<BookRegisterResponse> registerBook(
-            @RequestPart("book") BookRegisterRequest request,
-            @RequestPart("image") MultipartFile image
-    ) {
-        BookRegisterResponse response = bookService.registerBook(request, image);
+    public ResponseEntity<BookRegisterResponse> registerBook(@RequestBody BookRegisterRequest request) {
+
+        BookRegisterResponse response = bookService.registerBook(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/api/book/price")
+    public ResponseEntity<Double> getAveragePrice(@RequestParam String title) {
+        Double avgPrice = bookService.getAverageUsedPrice(title);
+        return ResponseEntity.ok(avgPrice);
     }
 
 
@@ -52,5 +57,17 @@ public class BookController {
     @GetMapping("/search-by-title")
     public ResponseEntity<List<BookPreviewDto>> searchByTitle(@RequestParam String keyword, @RequestParam String category) {
         return ResponseEntity.ok(bookService.searchByTitleAndCategory(keyword, category));
+    }
+
+    @GetMapping("/search/title")
+    public ResponseEntity<List<BookPreviewDto>> searchBooksByTitle(@RequestParam String keyword) {
+        List<BookPreviewDto> results = bookService.searchByTitle(keyword);
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/search/professor")
+    public ResponseEntity<List<BookPreviewDto>> searchBooksByProfessor(@RequestParam String keyword) {
+        List<BookPreviewDto> results = bookService.searchByProfessor(keyword);
+        return ResponseEntity.ok(results);
     }
 }

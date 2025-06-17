@@ -24,8 +24,10 @@ public class SecurityConfig {
                 .httpBasic(basic -> basic.disable()) //  기본 인증 헤더 비활성화
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/users/**", "/api/chatrooms", "/api/chatrooms/**",
-                                "/api/purchase/**", "/api/books/**", "/api/schedule", "/api/mypage", "/api/warning",
-                                "/api/recommendation/**", "/api/main", "/api/search/**", "/api/reviews").permitAll()
+                                "/api/purchase/**", "/api/books/**", "/api/books/register",  "/api/schedule", "/api/mypage", "/api/warning",
+                                "/api/recommendation/**", "/api/main", "/api/search/**","/api/sales/**", "/api/reviews","/api/favorites/**",
+                                "/public/**", "/css/**", "/js/**", "/images/**"
+                        ).permitAll()
                         .anyRequest().authenticated()  // 그 외는 인증 필요
                 );
 

@@ -42,6 +42,7 @@ public class ChatService {
 
                     return ChatRoomResponseDto.builder()
                             .roomId(room.getId())
+                            .bookId(room.getBookId())
                             .otherUserId(otherUser.getUserId().toString())
                             .otherUserName(otherUser.getName())
                             .otherUserProfileImage(otherUser.getProfileImage())
@@ -63,7 +64,13 @@ public class ChatService {
 
         List<ChatMessage> messages = chatMessageRepository.findByRoomOrderBySentAtAsc(room);
         return messages.stream()
-                .map(msg -> new ChatMessageDto(msg.getSender().getUserId(), msg.getContent(), msg.getSentAt()))
+                .map(msg -> new ChatMessageDto(
+                        msg.getId(),                         // ✅ messageId
+                        msg.getSender().getUserId(),         // ✅ senderId
+                        msg.getContent(),                    // ✅ message (content)
+                        msg.getSentAt()                      // ✅ sentAt
+                ))
+
                 .collect(Collectors.toList());
     }
 
@@ -84,6 +91,7 @@ public class ChatService {
         Long buyerId = requestDto.getBuyerId();
         Long sellerId = requestDto.getSellerId();
         Long bookId = requestDto.getBookId();
+
 
         Optional<ChatRoom> existingRoom = chatRoomRepository
                 .findByUser1UserIdAndUser2UserIdAndBookId(buyerId, sellerId, bookId);
@@ -107,6 +115,7 @@ public class ChatService {
 
         return ChatRoomResponseDto.builder()
                 .roomId(chatRoom.getId())
+                .bookId(chatRoom.getBookId())
                 .otherUserId(otherUser.getUserId().toString())
                 .otherUserName(otherUser.getName())
                 .otherUserProfileImage(otherUser.getProfileImage())

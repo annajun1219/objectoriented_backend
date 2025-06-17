@@ -10,12 +10,19 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface BookService {
-    BookRegisterResponse registerBook(BookRegisterRequest request, MultipartFile image);
+    BookRegisterResponse registerBook(BookRegisterRequest request);
 
     // 🔽 이 줄을 추가하세요
     BookDetailResponse getBookDetail(Long productId, Long viewerId);
 
     List<BookPreviewDto> getBooksByDepartment(String departmentName);
+
+    List<BookPreviewDto> getAllBooks();
+    List<BookPreviewDto> searchByTitle(String keyword);
+
+    List<BookPreviewDto> searchByProfessor(String keyword);
+
+    Double getAverageUsedPrice(String title);
 
     // 추천 도서 메서드 추가
 

@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BookRegisterRequest {
+    private String imageUrl;
     private Long sellerId;
     private String title;
     private String category;

@@ -1,8 +1,9 @@
 package com.example.oo_backend.book.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@NoArgsConstructor  // ✅ 이거 꼭 붙이기
+@AllArgsConstructor
 @Getter
 @Setter
 public class BookRegisterResponse {

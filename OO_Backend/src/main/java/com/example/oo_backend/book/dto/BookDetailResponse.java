@@ -2,6 +2,8 @@ package com.example.oo_backend.book.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,11 +17,17 @@ public class BookDetailResponse {
     private Integer officialPrice;       // null 허용
     private Integer discountRate;        // null 허용
     private String description;
+
     private String imageUrl;
+
     private String status;
     private String createdAt;
     private SellerInfo seller;
     private Boolean isMyPost;            // null 허용
+
+    private String category;
+    private String professorName;
+
 
     @Getter
     @Setter

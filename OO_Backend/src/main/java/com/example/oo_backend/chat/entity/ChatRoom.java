@@ -25,6 +25,7 @@ public class ChatRoom {
     @JoinColumn(name = "user2_id")
     private User user2;  // 참여자 2
 
+    @Column(name = "book_id")
     private Long bookId; // 책 ID 추가 (있다면)
 
     // 생성일자 등 필요한 추가 필드도 여기에 작성
