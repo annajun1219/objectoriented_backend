@@ -205,4 +205,47 @@ public class BookServiceImpl implements BookService {
                         book.getImageUrl()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<BookPreviewDto> getAllBooks() {
+        return bookRepository.findAll().stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookPreviewDto> searchByTitle(String keyword) {
+        return bookRepository.findByTitleContainingIgnoreCase(keyword).stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookPreviewDto> searchByProfessor(String keyword) {
+        return bookRepository.findByProfessorNameContainingIgnoreCase(keyword).stream()
+                .map(book -> new BookPreviewDto(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getPrice(),
+                        book.getProfessorName(),
+                        book.getCategory(),
+                        book.getImageUrl()
+                ))
+                .collect(Collectors.toList());
+    }
 }
+

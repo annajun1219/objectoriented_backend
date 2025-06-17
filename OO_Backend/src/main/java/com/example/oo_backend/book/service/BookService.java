@@ -15,6 +15,11 @@ public interface BookService {
 
     List<BookPreviewDto> getBooksByDepartment(String departmentName);
 
+    List<BookPreviewDto> getAllBooks();
+    List<BookPreviewDto> searchByTitle(String keyword);
+
+    List<BookPreviewDto> searchByProfessor(String keyword);
+
     // 추천 도서 메서드 추가
 
     List<BookPreviewDto> getRecommendedBooksBySchedule(Long userId);

@@ -24,6 +24,12 @@ public class BookController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping
+    public ResponseEntity<List<BookPreviewDto>> getAllBooks() {
+        List<BookPreviewDto> books = bookService.getAllBooks();
+        return ResponseEntity.ok(books);
+    }
+
     @GetMapping("/{productId}")
     public ResponseEntity<BookDetailResponse> getBookDetail(
             @PathVariable Long productId,
@@ -46,5 +52,17 @@ public class BookController {
     @GetMapping("/search-by-title")
     public ResponseEntity<List<BookPreviewDto>> searchByTitle(@RequestParam String keyword, @RequestParam String category) {
         return ResponseEntity.ok(bookService.searchByTitleAndCategory(keyword, category));
+    }
+
+    @GetMapping("/search/title")
+    public ResponseEntity<List<BookPreviewDto>> searchBooksByTitle(@RequestParam String keyword) {
+        List<BookPreviewDto> results = bookService.searchByTitle(keyword);
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/search/professor")
+    public ResponseEntity<List<BookPreviewDto>> searchBooksByProfessor(@RequestParam String keyword) {
+        List<BookPreviewDto> results = bookService.searchByProfessor(keyword);
+        return ResponseEntity.ok(results);
     }
 }
