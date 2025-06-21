@@ -11,5 +11,6 @@ public interface SalesService {
     Long createTransactionIfNotExists(Long bookId, Long sellerId, Long buyerId);
 
 
+    void updateBookStatus(Long bookId, String status);
 
 }

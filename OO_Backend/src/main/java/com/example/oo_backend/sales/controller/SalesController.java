@@ -33,6 +33,16 @@ public class SalesController {
         return ResponseEntity.ok(transactionId);
     }
 
+    @PatchMapping("/books/{bookId}/status")
+    public ResponseEntity<?> updateBookStatus(
+            @PathVariable Long bookId,
+            @RequestParam String status
+    ) {
+        salesService.updateBookStatus(bookId, status);
+        return ResponseEntity.ok().body("책 상태가 '" + status + "'로 변경되었습니다.");
+    }
+
+
     @PatchMapping("/{transactionId}/status")
     public ResponseEntity<String> updateTransactionStatus(
             @PathVariable Long transactionId,

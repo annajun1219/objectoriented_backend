@@ -54,12 +54,14 @@ public class ChatRoomController {
         return ResponseEntity.ok().build();
     }
 
-    // 채팅방 생성 (1:1)
+    // 채팅방 생성 (1:1)@PostMapping("/start")
     @PostMapping("/start")
     public ResponseEntity<ChatRoomResponseDto> startChat(@RequestBody StartChatRequestDto requestDto) {
         ChatRoomResponseDto response = chatService.startChat(requestDto);
         return ResponseEntity.ok(response);
     }
+
+
 
     // 채팅방에서 예약 완료 → 구매내역 연동
     @PostMapping("/{roomId}/reserve")

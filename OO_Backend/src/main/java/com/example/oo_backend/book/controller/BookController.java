@@ -71,4 +71,9 @@ public class BookController {
         List<BookPreviewDto> results = bookService.searchByProfessor(keyword);
         return ResponseEntity.ok(results);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<BookPreviewDto>> getAllBooks() {
+        return ResponseEntity.ok(bookService.getAllBooks());
+    }
 }
